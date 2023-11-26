@@ -276,7 +276,7 @@
         .contact-form textarea {
             margin: 10px 0;
             padding: 8px;
-            width: 50%;
+            width: 64%;
             box-sizing: border-box;
         }
 
@@ -953,14 +953,14 @@
                 <p>
                     Hello! I'm <span class="purple">Prakhar Kumar</span>, a passionate Full Stack Developer with 2.4
                     years of experience at TCS.
-                    I graduated from CMRIT in August 2021 with a CGPA of 6.72.
+                    I graduated from CMRIT in August 2021.
                 </p>
                 <p>
                     In addition to my professional journey, I'm also a content creator on YouTube, where I share my
                     knowledge
                     on Full Stack Development. My channel "Code Tech Gyan" has gathered over 900 subscribers, and I love
                     contributing to the
-                    developer community by creating informative and engaging content.
+                    developer community by creating informative and engaging content. I am proud to have received the "Best Team Award" for my outstanding contribution at TCS.
                 </p>
                 <p>
                     I believe in continuous learning and strive to stay updated with the latest technologies in the
@@ -973,12 +973,17 @@
 
         <section class="contact-section" id="contact-section">
             <h1>Contact Me</h1>
-            <div class="contact-form">
-                <input type="text" placeholder="Your Name">
-                <input type="email" placeholder="Your Email">
-                <textarea placeholder="Your Message"></textarea>
-                <button>Send Message</button>
+            <div class="contact-form" >
+                <form id="contactForm">
+                <input type="text" name="user_name" placeholder="Your Name">
+                <input type="email" name="user_email" placeholder="Your Email">
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <br/>
+                <button type="button"  id="sendButton">Send Message</button>
+               </form>
+
             </div>
+
         </section>
         <!-- ... (remaining HTML code) ... -->
 
@@ -1024,6 +1029,37 @@
 
     </main>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Include EmailJS library with your public key -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+    // Initialize EmailJS with your public key
+    emailjs.init('RuU4mBxiZA4U47r5T');
+
+    // Function to send email
+    function sendEmail() {
+        // Get the form element
+        var form = document.getElementById('contactForm');
+
+        // Use the EmailJS library to send the form
+        emailjs.sendForm('service_sqvdgvq', 'template_kqf4jm5', form)
+            .then(function (response) {
+                console.log('Email sent successfully:', response);
+                // You can add your own success handling code here
+            }, function (error) {
+                console.log('Email sending failed:', error);
+                // You can add your own error handling code here
+            });
+    }
+
+    // Attach the sendEmail function to the button click event
+    window.onload = function () {
+        document.getElementById('sendButton').addEventListener('click', function () {
+            sendEmail();
+        });
+    };
+</script>
+
     <script>
         document.querySelector('.btn').addEventListener('click', function () {
             window.location.href = "https://drive.google.com/uc?export=download&id=1lhe9ECTmuHoQEC23LpUahtcBdD_KsI0P";
@@ -1056,6 +1092,7 @@
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
+        
     </script>
 </body>
 
